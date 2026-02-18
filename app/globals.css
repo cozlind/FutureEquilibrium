@@ -19,6 +19,15 @@
   }
 }
 
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: transparent; /* 关键：不要用纯黑盖住背景层 */
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

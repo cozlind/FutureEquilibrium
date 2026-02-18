@@ -107,8 +107,6 @@ export default function HeroUI({
           <span className="hero-chip">{t.meta[0]}</span>
           <span className="hero-dot" />
           <span className="hero-chip">{t.meta[1]}</span>
-          <span className="hero-dot" />
-          <span className="hero-chip">{t.meta[2]}</span>
         </div>
       </header>
 

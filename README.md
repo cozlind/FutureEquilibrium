@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Future Equilibrium
 
-## Getting Started
+An interactive installation exploring a simple question:
 
-First, run the development server:
+> Will the future lean more toward order, or toward chaos?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Visitors enter a word or short sentence. The system analyzes its semantic tendency using AI and visualizes the result through a digital balance and a physical device.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Concept
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Language reflects perception.
 
-## Learn More
+Each input is interpreted as leaning toward:
+- Order
+- Chaos
 
-To learn more about Next.js, take a look at the following resources:
+The installation aggregates responses in real time and expresses the current collective tendency as a shifting balance.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This is not a prediction of the future. It is a measurement of how people imagine it.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## System Overview
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+User Input -> AI Semantic Analysis -> Database Storage -> Physical Device Output
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Components
+
+### 1) Web Interface
+- Users enter a word or sentence.
+- A balance visualization updates instantly.
+- The current Order vs Chaos value is displayed.
+- Deployed as a serverless web application.
+
+### 2) AI Analysis Layer
+- The backend sends user input to an LLM.
+- The model returns normalized scores.
+
+Example response (JSON):
+{ "order_score": 0.68, "chaos_score": 0.32 }
+
+### 3) Database
+- All inputs and their scores are stored in a PostgreSQL database.
+- Each record contains: text, order_score, chaos_score, timestamp
+- The system continuously calculates the overall average tendency.
+
+### 4) Physical Installation (Arduino)
+Architecture:
+Cloud API -> Local Python Bridge -> Serial Communication -> Arduino UNO
+
+Arduino outputs:
+- Motors (balance movement)
+- LEDs
+- Other physical elements
+
+The installation physically reflects the current Order–Chaos ratio.
+
+---
+
+## Core Idea
+
+The project turns abstract language into a measurable force.
+
+Order and chaos are not opposites — they are dynamic states within evolving systems.

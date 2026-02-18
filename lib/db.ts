@@ -12,7 +12,7 @@ export async function q<T = any>(text: string, params?: any[]) {
 
 export async function dbInsertSubmission(wordRaw: string, wordNorm: string, symbolicScore: number) {
   const res = await pool.query(
-    `insert into submissions(word_raw, word_norm, symbolic_score)
+    `insert into submissions(word_raw, word_norm, real_score)
      values ($1, $2, $3)
      returning id, created_at, word_norm, symbolic_score`,
     [wordRaw, wordNorm, symbolicScore]

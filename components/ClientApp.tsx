@@ -16,7 +16,7 @@ export default function ClientApp() {
   return (
     <>
       {/* 你现在的参数很激进，OK就保持；若 UI 被压过再调小 */}
-      <BackgroundA blobCount={38} intensity={1.5} speed={8.0} />
+      <BackgroundA blobCount={38} intensity={1.9} speed={8.0} />
 
       <HeroUI
         defaultLang="ja"

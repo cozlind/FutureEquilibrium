@@ -23,7 +23,7 @@ const copy = {
   },
   ja: {
     subtitle: "秩序 ⇄ 混沌",
-    meta: ["TOKYO", "KABUKICHŌ", "INSTALLATION"],
+    meta: ["TOKYO", "KABUKICHŌ"],
     meterHint:
       "単語または一文を入力してください。システムが「秩序〜混沌」の連続スペクトラム上に写像します。",
     inputLabel: "入力",

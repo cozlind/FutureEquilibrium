@@ -5,9 +5,9 @@
   display: grid;
   align-content: center;          /* ✅ 竖向更有空间，更“居中装置面板” */
   justify-items: center;
-  padding: 56px 20px;             /* ✅ 纵向留白变大 */
+  padding: 64px 20px;             /* ✅ 纵向留白变大 */
   color: rgba(255,255,255,0.92);
-  gap: 18px;                      /* ✅ 模块之间更松 */
+  gap: 56px;                      /* ✅ 模块之间更松 */
 }
 
 /* 回到原本更宽的面板宽度 */
@@ -47,10 +47,10 @@
 .hero-meta{
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
   flex-wrap: wrap;
-  opacity: 0.78;
+  opacity: 0.68;
   font-size: 12px;
   letter-spacing: 0.12em;
 }
@@ -114,7 +114,7 @@
 
 /* --- meter --- */
 .meter-card{
-  padding: 16px 16px 14px;
+  padding: 20px 18px 18px;
 }
 
 .meter-row{
@@ -126,10 +126,10 @@
 }
 
 .meter-label{
-  font-size: 12px;
+  font-size: 22px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  opacity: 0.88;
+  opacity: 0.78;
   white-space: nowrap;
 }
 
@@ -140,7 +140,7 @@
 
 .meter-track{
   position: relative;
-  height: 16px;
+  height: 33px;
   border-radius: 999px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.18);
@@ -226,10 +226,10 @@
 
 .meter-indicator{
   position:absolute;
-  top: -8px;
+  top: -10px;
   left: var(--p);
   width: 2px;
-  height: 32px;
+  height: 42px;
   transform: translateX(-1px);
   background: rgba(255,255,255,0.92);
   box-shadow:
@@ -254,15 +254,15 @@
 }
 
 .meter-hint{
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 13px;
-  opacity: 0.68;
+  opacity: 0.48;
   line-height: 1.4;
 }
 
 /* --- input --- */
 .input-card{
-  padding: 14px 16px 12px;
+  padding: 18px 18px 16px;
 }
 
 .input-label{
@@ -270,8 +270,8 @@
   font-size: 12px;
   letter-spacing: 0.20em;
   text-transform: uppercase;
-  opacity: 0.85;
-  margin-bottom: 10px;
+  opacity: 0.75;
+  margin-bottom: 20px;
 }
 
 /* ✅ 输入框左，按钮右（恢复你喜欢的） */
@@ -279,7 +279,7 @@
   display:flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .input-box{
@@ -302,7 +302,7 @@
 }
 
 .input-box::placeholder{
-  color: rgba(255,255,255,0.38);
+  color: rgba(255, 255, 255, 0.143);
 }
 
 .input-btn{
@@ -379,8 +379,8 @@
 .input-foot{
   display:flex;
   justify-content: space-between;  /* ✅ 竖向空间更足、信息分布更舒展 */
-  margin-top: 10px;
-  opacity: 0.55;
+  margin-top: 30px;
+  opacity: 0.35;
   font-size: 12px;
   gap: 10px;
   flex-wrap: wrap;
@@ -405,15 +405,41 @@
   100% { transform: translateY(0) scale(1); }
 }
 
-/* 手机：保持按钮在右，但让整体不溢出 */
 @media (max-width: 520px){
-  .hero-root{ padding: 34px 14px; align-content: start; } /* 手机上略靠上 */
-  .hero-header{ text-align: left; }
-  .hero-meta{ justify-content: flex-start; }
+  /* 让霓虹透出来，别被磨砂吞掉 */
+  .meter-card, .input-card{
+    background: rgba(0,0,0,0.18);
+    backdrop-filter: blur(8px);
+    border-color: rgba(255,255,255,0.16);
+  }
 
-  .input-box{ height: 50px; border-radius: 14px; }
-  .input-btn{ height: 50px; border-radius: 14px; padding: 0 12px; }
-  .input-foot{ justify-content: flex-start; }
+  /* 增强条本身的色彩与发光 */
+  .meter-fill-left{
+    background: linear-gradient(90deg,
+      rgba(0, 255, 255, 1.00) 0%,
+      rgba(0, 255, 255, 0.62) 55%,
+      rgba(0, 255, 255, 0.00) 100%
+    );
+    box-shadow:
+      0 0 22px rgba(0,255,255,0.42),
+      0 0 46px rgba(0,255,255,0.18);
+  }
+
+  .meter-fill-right{
+    background: linear-gradient(90deg,
+      rgba(200, 95, 255, 0.00) 0%,
+      rgba(200, 95, 255, 0.62) 45%,
+      rgba(200, 95, 255, 1.00) 100%
+    );
+    box-shadow:
+      0 0 22px rgba(200,95,255,0.40),
+      0 0 46px rgba(200,95,255,0.16);
+  }
+
+  /* 中点混色稍微加强 */
+  .meter-track::before{
+    opacity: 1;
+  }
 }
 
 /* 减少动效 */

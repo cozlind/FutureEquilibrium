@@ -18,7 +18,7 @@ const copy = {
     order: "ORDER",
     chaos: "CHAOS",
     noteEnter: "Press Enter to submit",
-    noteShift: "Shift+Enter stays (if you later switch to textarea)",
+    noteShift: "Shift+Enter stays",
     langLabel: "LANG",
   },
   ja: {
@@ -33,7 +33,7 @@ const copy = {
     order: "秩序",
     chaos: "混沌",
     noteEnter: "Enterで送信",
-    noteShift: "Shift+Enterで改行（後でtextareaにする場合）",
+    noteShift: "Shift+Enterで改行",
     langLabel: "言語",
   },
 } as const;

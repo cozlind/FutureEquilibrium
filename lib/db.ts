@@ -10,12 +10,19 @@ export async function q<T = any>(text: string, params?: any[]) {
   return res.rows as T[];
 }
 
-export async function dbInsertSubmission(wordRaw: string, wordNorm: string, symbolicScore: number) {
+export async function dbInsertSubmission(
+  wordRaw: string,
+  wordNorm: string,
+  realScore: number
+) {
   const res = await pool.query(
-    `insert into submissions(word_raw, word_norm, real_score)
-     values ($1, $2, $3)
-     returning id, created_at, word_norm, symbolic_score`,
-    [wordRaw, wordNorm, symbolicScore]
+    `
+    insert into submissions(word_raw, word_norm, real_score)
+    values ($1, $2, $3)
+    returning id, created_at, word_norm, real_score
+    `,
+    [wordRaw, wordNorm, realScore]
   );
+
   return res.rows[0];
 }

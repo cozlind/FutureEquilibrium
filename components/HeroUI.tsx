@@ -59,14 +59,16 @@ export default function HeroUI({
 
   const pct = Math.max(0, Math.min(1, value));
 
-  // ✅ 宽度用 float，显示用 round（避免 99/101 抖动 & 断层）
-  const leftPct = pct * 100;
-  const rightPct = 100 - leftPct;
+  // value: 0=秩序, 1=混沌
+  // orderPct: 秩序百分比（左边绿条）
+  // chaosPct: 混沌百分比（右边紫条）
+  const orderPct = pct * 100;
+  const chaosPct = 100 - orderPct;
 
-  // ✅ 指示器应落在“左侧填充结束处”
+  // indicator 位置：从左边算，秩序越高越靠右
   const indicatorStyle = useMemo(
-    () => ({ ["--p" as any]: `${rightPct}%` }),
-    [rightPct]
+    () => ({ ["--p" as any]: `${orderPct}%` }),
+    [orderPct]
   );
 
   const onFormSubmit = (e: React.FormEvent) => {
@@ -113,26 +115,27 @@ export default function HeroUI({
       {/* ✅ submitFxKey 用 key 强制重播 CSS 动画（更明显“提交触发”） */}
       <section className="meter-card fx-scope" key={`m-${submitFxKey}`}>
         <div className="meter-row">
-          <div className="meter-label meter-label-left">
-            {t.order} <span className="meter-num">{Math.round(leftPct)}%</span>
-          </div>
-          <div className="meter-label meter-label-right">
-            <span className="meter-num">{Math.round(rightPct)}%</span> {t.chaos}
-          </div>
+          <div className="meter-label meter-label-left">{t.order}</div>
+          <div className="meter-label meter-label-right">{t.chaos}</div>
         </div>
 
-        <div className="meter-track" style={indicatorStyle}>
-          <div
-            className="meter-fill meter-fill-left"
-            style={{ width: `${rightPct}%` }}
-          />
-          <div
-            className="meter-fill meter-fill-right"
-            style={{ width: `${leftPct}%` }}
-          />
-
-          <div className="meter-indicator" />
-          <div className="meter-gloss" />
+        <div className="meter-track-wrap">
+          <div className="meter-track">
+            <div
+              className="meter-fill meter-fill-left"
+              style={{ width: `${orderPct}%` }}
+            />
+            <div
+              className="meter-fill meter-fill-right"
+              style={{ width: `${chaosPct}%` }}
+            />
+            <div className="meter-pct" style={indicatorStyle}>
+              <span className="pct-left">{Math.round(orderPct)}%</span>
+              <span className="pct-right">{Math.round(chaosPct)}%</span>
+            </div>
+            <div className="meter-gloss" />
+          </div>
+          <div className="meter-indicator" style={indicatorStyle} />
         </div>
 
         <div className="meter-hint">{t.meterHint}</div>

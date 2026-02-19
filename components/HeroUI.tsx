@@ -32,7 +32,7 @@ const copy = {
     submitting: "送信中",
     order: "秩序",
     chaos: "混沌",
-    noteEnter: "Enterで送信",
+    noteEnter: "",
     noteShift: "Shift+Enterで改行",
     langLabel: "言語",
   },
@@ -60,13 +60,13 @@ export default function HeroUI({
   const pct = Math.max(0, Math.min(1, value));
 
   // ✅ 宽度用 float，显示用 round（避免 99/101 抖动 & 断层）
-  const leftPct = (1 - pct) * 100;
+  const leftPct = pct * 100;
   const rightPct = 100 - leftPct;
 
   // ✅ 指示器应落在“左侧填充结束处”
   const indicatorStyle = useMemo(
-    () => ({ ["--p" as any]: `${leftPct}%` }),
-    [leftPct]
+    () => ({ ["--p" as any]: `${rightPct}%` }),
+    [rightPct]
   );
 
   const onFormSubmit = (e: React.FormEvent) => {
@@ -124,11 +124,11 @@ export default function HeroUI({
         <div className="meter-track" style={indicatorStyle}>
           <div
             className="meter-fill meter-fill-left"
-            style={{ width: `${leftPct}%` }}
+            style={{ width: `${rightPct}%` }}
           />
           <div
             className="meter-fill meter-fill-right"
-            style={{ width: `${rightPct}%` }}
+            style={{ width: `${leftPct}%` }}
           />
 
           <div className="meter-indicator" />

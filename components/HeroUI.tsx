@@ -168,7 +168,6 @@ export default function HeroUI({
         </div>
 
         <div className="input-foot">
-          <span className="input-note">{t.noteEnter}</span>
           <span className="input-note">{t.noteShift}</span>
         </div>
       </form>

@@ -15,6 +15,15 @@
   opacity: 0.95;
 }
 
+.bgA-weave{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity: 0.85;
+  mix-blend-mode: screen;
+}
+
 /* 扫描线 */
 .bgA-scan{
   position:absolute;
